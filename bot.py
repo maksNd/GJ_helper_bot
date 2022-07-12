@@ -34,8 +34,8 @@ def show_buttons(message):
         bot.send_message(message.chat.id, "ok, change zone", reply_markup=keyboard)
 
     if message.text in ('F01', 'F02', 'F03', 'F04', 'F05', 'F06', 'F07', 'F08'):
-        print('ok')
-        bot.send_message(message.chat.id, "finally")
+        zone = message.text
+        bot.send_message(message.chat.id, f"finally {zone}.{position}")
 
 bot.infinity_polling()
 
