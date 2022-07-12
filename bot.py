@@ -15,14 +15,14 @@ bot = telebot.TeleBot(token, parse_mode=None)
 #     bot.reply_to(message, "Howdy, how are you doing?")
 
 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-button_f01 = types.KeyboardButton('/F01')
-button_f02 = types.KeyboardButton('/F02')
-button_f03 = types.KeyboardButton('/F03')
-button_f04 = types.KeyboardButton('/F04')
-button_f05 = types.KeyboardButton('/F05')
-button_f06 = types.KeyboardButton('/F06')
-button_f07 = types.KeyboardButton('/F07')
-button_f08 = types.KeyboardButton('/F08')
+button_f01 = types.KeyboardButton('F01')
+button_f02 = types.KeyboardButton('F02')
+button_f03 = types.KeyboardButton('F03')
+button_f04 = types.KeyboardButton('F04')
+button_f05 = types.KeyboardButton('F05')
+button_f06 = types.KeyboardButton('F06')
+button_f07 = types.KeyboardButton('F07')
+button_f08 = types.KeyboardButton('F08')
 
 keyboard.add(button_f01, button_f02, button_f03, button_f04, button_f05, button_f06, button_f07, button_f08)
 
@@ -33,12 +33,9 @@ def show_buttons(message):
         position = message.text
         bot.send_message(message.chat.id, "ok, change zone", reply_markup=keyboard)
 
-@bot.message_handler(commands=['F01'])
-def lalala(message):
-    print(position)
-
-
-# if message.text in ('F01', 'F02', 'F03', 'F04', 'F05', 'F06', 'F07', 'F08'):
+    if message.text in ('F01', 'F02', 'F03', 'F04', 'F05', 'F06', 'F07', 'F08'):
+        print('ok')
+        bot.send_message(message.chat.id, "finally")
 
 bot.infinity_polling()
 
