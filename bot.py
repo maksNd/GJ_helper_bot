@@ -18,7 +18,7 @@ def send_welcome(message):
 def find_IGME_position(message):
     if message.text[:3] in dict_from_json:
         zone_name = message.text[:3]
-        bot.reply_to(message, f'{dict_from_json[zone_name][message.text]}')
+        bot.reply_to(message, f'IGME - {dict_from_json[zone_name][message.text]}')
 
 
 bot.infinity_polling()
