@@ -2,7 +2,8 @@ import telebot
 from telebot import types
 from reading_json import reading_json_file
 
-filepath = r'data_for_all_zones1.json'
+# filepath = r'data_for_all_zones1.json'
+filepath = r'positions_for_all_zones.json'
 
 dict_from_json = reading_json_file(filepath)
 
