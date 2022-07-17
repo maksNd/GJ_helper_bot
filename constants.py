@@ -4,4 +4,4 @@ TOKEN = '5309057246:AAHlSg-gPpai544joQP21s2ZW94lpd57-oU'  # echo_1207 t.me/echo_
 
 LOCAL_JSON = r'positions_for_all_zones.json'
 
-JSON_FROM_GITHUB = r'https://raw.githubusercontent.com/maksNd/GJ_helper_bot/fe6451d1683e56f6fe14d54a4bbc69d3f0d0342e/positions_for_all_zones.json'
+JSON_FROM_GITHUB = r'https://raw.githubusercontent.com/maksNd/GJ_helper_bot/master/positions_for_all_zones.json'
