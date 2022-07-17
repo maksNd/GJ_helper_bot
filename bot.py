@@ -1,14 +1,10 @@
 import telebot
-from constants import TOKEN
+from constants import TOKEN, DATA_SOURCE
 from utils import create_keybord_for_zones, reading_json_file
 
-filepath = r'data_for_all_zones1.json'
-
-dict_from_json = reading_json_file(filepath)
+dict_from_json = reading_json_file(DATA_SOURCE)
 
 bot = telebot.TeleBot(TOKEN, parse_mode=None)
-
-# keyboard_for_zones = create_keybord_for_zones()
 
 
 @bot.message_handler(commands=['start'])
