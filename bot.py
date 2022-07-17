@@ -1,7 +1,6 @@
 import telebot
-from reading_json import reading_json_file
 from constants import TOKEN
-from utils import create_keybord_for_zones
+from utils import create_keybord_for_zones, reading_json_file
 
 filepath = r'data_for_all_zones1.json'
 
@@ -30,6 +29,8 @@ def show_buttons(message):
             bot.send_message(message.chat.id, f"{zone}.{position} - {dict_from_json[zone][f'{zone}.{position}'][-4:]}")
         except KeyError:
             bot.send_message(message.chat.id, f'Не могу найти позицию - {zone}.{position}')
+        except NameError:
+            bot.send_message(message.chat.id, f'Для начала введите позицию\n(4х значное число)')
 
 
 bot.infinity_polling()
