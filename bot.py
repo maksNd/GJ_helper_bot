@@ -1,8 +1,7 @@
 import telebot
-from constants import TOKEN, LOCAL_JSON
-from utils import create_keybord_for_zones, load_from_local_json_file, load_from_gitHub_json_file
-
-# dict_from_json = load_from_local_json_file(LOCAL_JSON)
+from constants import TOKEN
+from utils import create_keybord_for_zones, load_from_gitHub_json_file
+from utils_for_show_change import conver_str_to_date, show_change_for_date
 
 bot = telebot.TeleBot(TOKEN, parse_mode=None)
 
@@ -16,7 +15,15 @@ position_to_find = {'position': '0000'}  # инициализируем пере
 
 
 @bot.message_handler()
-def show_buttons(message):
+def main_message_handler(message):  # перехватчик всех сообщений
+    if len(message.text) in (3, 4, 5, 6) and '.' in message.text:
+        try:
+            date_for_calculate = conver_str_to_date(message.text)
+            change_for_date = show_change_for_date(date_for_calculate)
+            bot.send_message(message.chat.id, f'{date_for_calculate.strftime("%d.%m.%y")}:\n{change_for_date}')
+        except ValueError:
+            return
+
     if len(message.text) == 4 and message.text.isdigit():
         position_to_find['position'] = message.text  # если ввод похож на позицию для поиска - переопределим переменную
         bot.send_message(message.chat.id, "Выберите зону", reply_markup=create_keybord_for_zones())
