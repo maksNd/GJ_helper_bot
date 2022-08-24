@@ -43,10 +43,19 @@ position_to_find = {'position': '0000'}  # инициализируем пере
 @bot.message_handler()
 def main_message_handler(message):  # перехватчик всех сообщений
 
+
+
     logger.info(f'{message.from_user.id} :'
                 f' {message.from_user.first_name}'
                 f' {message.from_user.last_name} :'
                 f' {message.text}')
+
+    if message.text == 'Cancel':
+        start_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        button_1 = types.KeyboardButton('Find IGME position')
+        button_2 = types.KeyboardButton('Change')
+        start_keyboard.add(button_1, button_2)
+        bot.send_message(message.chat.id, 'ok', reply_markup=start_keyboard)
 
     if looks_like_date(message.text):  # если введен текст похожий на дату
         try:
@@ -96,7 +105,7 @@ def main_message_handler(message):  # перехватчик всех сообщ
     if message.text == 'Find IGME position':  # нажата кнопка "Find IGME position"
         # remote_keyboard = types.ReplyKeyboardRemove()  # удалит клавиатуру
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        cancel_button = types.KeyboardButton('/cancel')
+        cancel_button = types.KeyboardButton('Cancel')
         keyboard.add(cancel_button)
         bot.send_message(message.chat.id, "Write conveyor position\n(4 signs)", reply_markup=keyboard)
 
